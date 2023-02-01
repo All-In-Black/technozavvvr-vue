@@ -1,1 +1,3 @@
 # technozavvvr-vue
+Приложение в разработке...
+![image](https://user-images.githubusercontent.com/73894426/216029791-7d7954ad-e4cc-46a2-9c3f-60e4f17d2031.png)
