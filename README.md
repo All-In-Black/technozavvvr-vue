@@ -1,3 +1,19 @@
 # technozavvvr-vue
-Приложение в разработке...
-![image](https://user-images.githubusercontent.com/73894426/216029791-7d7954ad-e4cc-46a2-9c3f-60e4f17d2031.png)
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
