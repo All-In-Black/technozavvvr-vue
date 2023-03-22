@@ -2,7 +2,7 @@
     <aside class="filter">
         <h2 class="filter__title">Фильтры</h2>
 
-        <form class="filter__form form" action="#" method="get">
+        <form class="filter__form form" action="#" method="get" @submit.prevent="submit">
           <fieldset class="form__block">
             <legend class="form__legend">Цена</legend>
             <label class="form__label form__label--price">
@@ -17,7 +17,7 @@
               <input class="form__input"
                 type="text"
                 name="max-price"
-                v-model="priceTo" 
+                v-model="currentPriceTo" 
                 />
               <span class="form__value">До</span>
             </label>
@@ -30,7 +30,7 @@
                 class="form__select"
                 type="text"
                 name="category"
-                v-model="categoryId" >
+                v-model="currentCategoryId" >
 
                 <option value="0">Все категории</option>
 
@@ -183,7 +183,14 @@ export default {
         categories() {
             return categories;
         }
-    }
+    },
+    methods: {
+        submit() {
+            this.$emit('update:priceFrom', this.currentPriceFrom);
+            this.$emit('update:priceTo', this.currentPriceTo);
+            this.$emit('update:categoryId', this.currentCategoryId);
+        }
+    },
 }
 
 </script>
