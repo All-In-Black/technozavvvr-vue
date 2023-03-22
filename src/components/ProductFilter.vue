@@ -9,7 +9,7 @@
               <input class="form__input" 
                 type="text" 
                 name="min-price"
-                v-model="currentPriceFrom" 
+                v-model.number="currentPriceFrom" 
                 />
               <span class="form__value">От</span>
             </label>
@@ -17,7 +17,7 @@
               <input class="form__input"
                 type="text"
                 name="max-price"
-                v-model="currentPriceTo" 
+                v-model.number="currentPriceTo" 
                 />
               <span class="form__value">До</span>
             </label>
@@ -30,7 +30,7 @@
                 class="form__select"
                 type="text"
                 name="category"
-                v-model="currentCategoryId" >
+                v-model.number="currentCategoryId" >
 
                 <option value="0">Все категории</option>
 
@@ -158,7 +158,10 @@
           <button class="filter__submit button button--primery" type="submit">
             Применить
           </button>
-          <button class="filter__reset button button--second" type="button">
+          <button 
+            class="filter__reset button button--second" type="button"
+            @click.prevent="reset"
+            >
             Сбросить
           </button>
         </form>
@@ -184,12 +187,28 @@ export default {
             return categories;
         }
     },
+    watch: {
+        priceFrom(value) {
+            this.currentPriceFrom = value;
+        },
+        priceTo(value) {
+            this.currentPriceTo = value;
+        },
+        categoryId(value) {
+            this.currentCategoryId = value;
+        },
+    },
     methods: {
         submit() {
             this.$emit('update:priceFrom', this.currentPriceFrom);
             this.$emit('update:priceTo', this.currentPriceTo);
             this.$emit('update:categoryId', this.currentCategoryId);
-        }
+        },
+        reset() {
+            this.$emit('update:priceFrom', 0);
+            this.$emit('update:priceTo', 0);
+            this.$emit('update:categoryId', 0);
+        },
     },
 }
 
