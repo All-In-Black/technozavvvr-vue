@@ -187,6 +187,17 @@ export default {
             return categories;
         }
     },
+    watch: {
+        priceFrom(value) {
+            this.currentPriceFrom = value;
+        },
+        priceTo(value) {
+            this.currentPriceTo = value;
+        },
+        categoryId(value) {
+            this.currentCategoryId = value;
+        },
+    },
     methods: {
         submit() {
             this.$emit('update:priceFrom', this.currentPriceFrom);
